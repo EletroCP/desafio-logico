@@ -1,0 +1,31 @@
+{
+  "name": "desafio-logico",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Serie de desafios para testar a logica",
+  "main": "script.js",
+  "scripts": {
+    "test": "jest",
+    "lint": "npx eslint script.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/EletroCP/desafio-l-gico.git"
+  },
+  "author": "EletroCP",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/EletroCP/desafio-l-gico/issues"
+  },
+  "homepage": "https://github.com/EletroCP/desafio-l-gico#readme",
+  "devDependencies": {
+    "@babel/preset-env": "^7.25.4",
+    "@eslint/js": "^9.9.1",
+    "eslint": "^9.10.0",
+    "globals": "^15.9.0",
+    "jest": "^29.7.0"
+  },
+  "dependencies": {
+    "eslint-plugin-jest": "^28.8.3"
+  }
+}
