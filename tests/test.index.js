@@ -8,6 +8,7 @@ import {
     compareNumbers,
     calculator,    
     fareCalculation,
+    sumNumbers
 }from '../script';
 
 
@@ -160,7 +161,7 @@ describe('08 - Deve retornar o resultado correto com base na operação',() => {
         expect(() => calculator(null, 4)).toThrow('Deve se informado um operador valido');
     });
 
-    it([
+    it.each([
         [operators[3], 5, 5, 1],
         [operators[2], 5, 5, 25],
         [operators[1], 5, 5, 0],
@@ -170,7 +171,7 @@ describe('08 - Deve retornar o resultado correto com base na operação',() => {
         expect(() => calculator(operator, num1, num2)).toBe(result)
     });
 });
-//fareCalculation
+
 describe('09 - Deve retornar o valor correto da tarifa', () => {
     it('O valor da entrada precisa ser um numero', () => {
         expect(fareCalculation(NaN, true)).toThrow(Error);
@@ -186,7 +187,7 @@ describe('09 - Deve retornar o valor correto da tarifa', () => {
         expect(fareCalculation(1, false)).not.toThrow();
     });
 
-    it([
+    it.each([
         [5, false, 'Passagem gratuita'],
         [7, false, 'Valor da passagem R$ 2,50'],
         [7, true, 'Valor da passagem R$ 1,25'],
@@ -196,4 +197,19 @@ describe('09 - Deve retornar o valor correto da tarifa', () => {
     ])('Retorna o valor correto da tarifa', (age, student, response) => {
         expect(fareCalculation(age, student)).toBe(response);
     });
+});
+
+describe('10 - Retorna o valor da soma dos valores anterioreas até a entrada', () => {
+    it('Retorna um erro caso a entrada não seja um numero', () => {
+        expect(sumNumbers(NaN)).toThrow(Error);
+        expect(sumNumbers(NaN)).toThrow('O valor da idade dev e ser um número');
+    })
+
+    it.each([
+        [5, 15],
+        [10, 55],
+        [100, 5050]
+    ])('Retorna o valor da soma dos valores', (num, result) => {
+        expect(sumNumbers(num)).toBe(result);
+    })
 });
