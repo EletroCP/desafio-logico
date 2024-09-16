@@ -1,5 +1,5 @@
-import convertTemperature from '../script';
-import convetTemperature from '../script';
+import { convertTemperature, bmiCalculation, concatString }from '../script';
+
 
 describe('Função de converção de Celsius e Fahrenheit', () => {
     it('Se falha ao informar um tipo incorreto de medida', () => {
@@ -13,10 +13,33 @@ describe('Função de converção de Celsius e Fahrenheit', () => {
     });
 
     it('Se converte corretamente de celsius para fahrenheit', () => {
-        expect(convetTemperature('celcius', 25)).expect(77);       
+        expect(convertTemperature('celcius', 25)).expect(77);       
     });
 
     it('Se converte corretamente de fahrenheit para celcius', () => {
         expect(convertTemperature('fahrenheit', 41)).expect(5)
     });
+});
+
+describe('Função de calculo de IMC', () => {
+    it.each([
+      ['80', 1.63, 'Os valores devem ser um número'],
+      [80, '1.63', 'Os valores devem ser um número'],
+      ['80', '1.63', 'Os valores devem ser um número'],
+    ])('Falha ao informar um tipo incorreto de valor', (peso, altura, errMsg) => {
+      expect(() => bmiCalculation(peso, altura)).toThrow(Error);
+      expect(() => bmiCalculation(peso, altura)).toThrow(errMsg);
+    });
+
+    it.each([
+        [50, 1.80, 'Abaixo do peso normal'],
+        [70, 1.80, 'Normal'],
+        [85, 1.80, 'Sobrepeso'],
+        [95, 1.80, 'Obesidade grau I'],
+        [110, 1.80, 'Obesidade grau II'],
+        [125, 1.80, 'Obesidade grau III'],
+        [140, 1.80, 'Obesidade grau III'],
+      ])('Deve retornar o tipo de obesidade com base no peso e altura', (peso, altura, result) => {
+        expect(bmiCalculation(peso, altura)).toBe(result);
+      });
 });
