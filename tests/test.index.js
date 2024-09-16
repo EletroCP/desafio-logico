@@ -43,13 +43,14 @@ describe('Função de calculo de IMC', () => {
         expect(bmiCalculation(peso, altura)).toBe(result);
       });
 
-      describe('Função de concatenação de strings', () => {
-        it.each([
-            ['Carlos', 25, 'Brasilia', 'Olá! Sou Carlos tenho 25 anos e moro em Brasilia'],
-            ['Mateus', 36, 'Maceió', 'Olá! Sou Mateus tenho 36 anos e moro em Maceió'],
-            ['Breno', 26, 'Curitiba', 'Olá! Sou Breno tenho 26 anos e moro em Curitiba']
-        ])('Deve retornar de forma correta a string concatenada', (nome, idade, cidade, result) => {
-            expect(concatString(nome, idade, cidade)).toEqual(result);
-        });
-      });
+    });
+    
+describe('Função de concatenação de strings', () => {
+    it.each([
+        ['Carlos', 25, 'Brasilia', 'Olá! Sou Carlos tenho 25 anos e moro em Brasilia'],
+        ['Mateus', 36, 'Maceió', 'Olá! Sou Mateus tenho 36 anos e moro em Maceió'],
+        ['Breno', 26, 'Curitiba', 'Olá! Sou Breno tenho 26 anos e moro em Curitiba']
+    ])('Deve retornar de forma correta a string concatenada', (nome, idade, cidade, result) => {
+        expect(concatString(nome, idade, cidade)).toEqual(result);
+    });
 });
