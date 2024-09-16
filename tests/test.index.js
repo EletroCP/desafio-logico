@@ -3,7 +3,10 @@ import {
     bmiCalculation, 
     concatString,
     calcAreaRectangle,
-    evenOrOdd
+    evenOrOdd,
+    ageRange,
+    compareNumbers,
+    calculator
 }from '../script';
 
 
@@ -137,3 +140,26 @@ describe('07 - Deve retornar se os números comparados são maior, menor ou igua
         expect(() => compareNumbers(value1, value2)).toBe(response);
     });
 });
+
+describe('08 - Deve retornar o resultado correto com base na operação',() => {
+    const operators = ['+', '-', '*', '/'];
+    it('Falha ao informar valores que não são números', () => {
+        expect(() => calculator(operators[0], NaN, 1)).toThrow(Error);
+        expect(() => calculator(operators[0], NaN, 1)).toThrow('O valor informado deve ser um número');
+    });
+
+    it('Falha ao não informar um operador', () => {
+        expect(() => calculator(null, 4)).toThrow(Error);
+        expect(() => calculator(null, 4)).toThrow('Deve se informado um operador valido');
+    });
+
+    it([
+        [operators[3], 5, 5, 1],
+        [operators[2], 5, 5, 25],
+        [operators[1], 5, 5, 0],
+        [operators[0], 5, 5, 10],
+        [operators[3], 5, 0, 'Infinity'],
+    ])('Retorna os valores corretos com base nas operações', (operator, num1, num2, result) => {
+        expect(() => calculator(operator, num1, num2)).toBe(result)
+    });
+})
