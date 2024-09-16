@@ -122,3 +122,18 @@ describe('Deve informar a faixa etária com base na idade informada', () => {
         expect(() => ageRange(age)).toBe(response);
     });
 });
+
+describe('Deve retornar se os números comparados são maior, menor ou igual', () => {
+    it('Falha ao informar um tipo incorreto de valor', () => {
+        expect(() => ageRange(NaN)).toThrow(Error);
+        expect(() => ageRange(NaN)).toThrow('O valor informado deve ser um número');
+    });
+
+    it.each([
+        [1, 2, 'O primeiro número é menor.'],
+        [2, 1, 'O primeiro número é maior.'],
+        [1, 1, 'Os números são iguais.'],
+    ])('Retorna a resposta correta', (value1, value2, response) => {
+        expect(() => compareNumbers(value1, value2)).toBe(response);
+    });
+})
