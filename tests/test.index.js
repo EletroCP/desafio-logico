@@ -1,4 +1,9 @@
-import { convertTemperature, bmiCalculation, concatString }from '../script';
+import { 
+    convertTemperature,
+    bmiCalculation, 
+    concatString,
+    calcAreaRectangle
+}from '../script';
 
 
 describe('Função de converção de Celsius e Fahrenheit', () => {
@@ -52,5 +57,24 @@ describe('Função de concatenação de strings', () => {
         ['Breno', 26, 'Curitiba', 'Olá! Sou Breno tenho 26 anos e moro em Curitiba']
     ])('Deve retornar de forma correta a string concatenada', (nome, idade, cidade, result) => {
         expect(concatString(nome, idade, cidade)).toEqual(result);
+    });
+});
+
+describe('Função de calculo de área de um retangulo', () => {
+    it.each([
+        ['15', 16, 'Os valores devem ser números'],
+        [15, '16', 'Os valores devem ser números'],
+        ['15', '16', 'Os valores devem ser números'],
+    ])('Deve retornar uma menssagem de erro', (width, heigth, errMsg) => {
+        expect(calcAreaRectangle(width, heigth)).toThrow(Error);
+        expect(calcAreaRectangle(width, heigth)).toThrow(errMsg);
+    });
+
+    it.each([
+        [15, 16, 240],
+        [10, 10, 100],
+        [7, 20, 140],
+    ])('Deve retornar a multiplicação dos valores', (width, heigth, result) => {
+        expect(calcAreaRectangle(width, heigth)).toBe(result);
     });
 });
