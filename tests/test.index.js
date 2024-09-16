@@ -7,7 +7,7 @@ import {
 }from '../script';
 
 
-describe('Função de converção de Celsius e Fahrenheit', () => {
+describe('01 - Função de converção de Celsius e Fahrenheit', () => {
     it('Se falha ao informar um tipo incorreto de medida', () => {
         expect(convertTemperature('banana', 14)).toBeInstanceOf(Error);
         expect(convertTemperature('banana', 14).message).toBe('Tipo de temperatura inválido.');
@@ -27,7 +27,7 @@ describe('Função de converção de Celsius e Fahrenheit', () => {
     });
 });
 
-describe('Função de calculo de IMC', () => {
+describe('02 - Função de calculo de IMC', () => {
     it.each([
       ['80', 1.63, 'Os valores devem ser um número'],
       [80, '1.63', 'Os valores devem ser um número'],
@@ -51,7 +51,7 @@ describe('Função de calculo de IMC', () => {
 
     });
     
-describe('Função de concatenação de strings', () => {
+describe('03 - Função de concatenação de strings', () => {
     it.each([
         ['Carlos', 25, 'Brasilia', 'Olá! Sou Carlos tenho 25 anos e moro em Brasilia'],
         ['Mateus', 36, 'Maceió', 'Olá! Sou Mateus tenho 36 anos e moro em Maceió'],
@@ -61,7 +61,7 @@ describe('Função de concatenação de strings', () => {
     });
 });
 
-describe('Função de calculo de área de um retangulo', () => {
+describe('04 - Função de calculo de área de um retangulo', () => {
     it.each([
         ['15', 16, 'Os valores devem ser números'],
         [15, '16', 'Os valores devem ser números'],
@@ -80,7 +80,7 @@ describe('Função de calculo de área de um retangulo', () => {
     });
 });
 
-describe('Deve dizer se um número é divisivel por 2', () => {
+describe('05 - Deve dizer se um número é divisivel por 2', () => {
     it('Falha ao informar um tipo incorreto de valor', () => {
         expect(() => evenOrOdd(NaN)).toThrow(Error);
         expect(() => evenOrOdd('#')).toThrow('O valor informado deve ser um número');
@@ -98,7 +98,7 @@ describe('Deve dizer se um número é divisivel por 2', () => {
     });
 });
 
-describe('Deve informar a faixa etária com base na idade informada', () => {
+describe('06 - Deve informar a faixa etária com base na idade informada', () => {
     it('Falha ao informar um tipo incorreto de valor', () => {
         expect(() => ageRange(NaN)).toThrow(Error);
         expect(() => ageRange('#')).toThrow('O valor informado deve ser um número');
@@ -123,7 +123,7 @@ describe('Deve informar a faixa etária com base na idade informada', () => {
     });
 });
 
-describe('Deve retornar se os números comparados são maior, menor ou igual', () => {
+describe('07 - Deve retornar se os números comparados são maior, menor ou igual', () => {
     it('Falha ao informar um tipo incorreto de valor', () => {
         expect(() => ageRange(NaN)).toThrow(Error);
         expect(() => ageRange(NaN)).toThrow('O valor informado deve ser um número');
@@ -136,4 +136,4 @@ describe('Deve retornar se os números comparados são maior, menor ou igual', (
     ])('Retorna a resposta correta', (value1, value2, response) => {
         expect(() => compareNumbers(value1, value2)).toBe(response);
     });
-})
+});
