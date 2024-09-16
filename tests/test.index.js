@@ -6,7 +6,8 @@ import {
     evenOrOdd,
     ageRange,
     compareNumbers,
-    calculator
+    calculator,    
+    fareCalculation,
 }from '../script';
 
 
@@ -146,6 +147,12 @@ describe('08 - Deve retornar o resultado correto com base na operação',() => {
     it('Falha ao informar valores que não são números', () => {
         expect(() => calculator(operators[0], NaN, 1)).toThrow(Error);
         expect(() => calculator(operators[0], NaN, 1)).toThrow('O valor informado deve ser um número');
+
+        expect(() => calculator(operators[0], 1, NaN)).toThrow(Error);
+        expect(() => calculator(operators[0], 1, NaN)).toThrow('O valor informado deve ser um número');
+
+        expect(() => calculator(operators[0], NaN, NaN)).toThrow(Error);
+        expect(() => calculator(operators[0], NaN, NaN)).toThrow('O valor informado deve ser um número');
     });
 
     it('Falha ao não informar um operador', () => {
@@ -162,4 +169,31 @@ describe('08 - Deve retornar o resultado correto com base na operação',() => {
     ])('Retorna os valores corretos com base nas operações', (operator, num1, num2, result) => {
         expect(() => calculator(operator, num1, num2)).toBe(result)
     });
-})
+});
+//fareCalculation
+describe('09 - Deve retornar o valor correto da tarifa', () => {
+    it('O valor da entrada precisa ser um numero', () => {
+        expect(fareCalculation(NaN, true)).toThrow(Error);
+        expect(fareCalculation(NaN, true)).toThrow('O valor da idade dev e ser um número');
+    });
+
+    it('A entrada de estudande deve ser true ou false', () => {
+        expect(() => fareCalculation(1, 'sim')).toThrow('Por favor informe se é estudante');
+        expect(() => fareCalculation(1, null)).toThrow('Por favor informe se é estudante');
+        expect(() => fareCalculation(1, 1)).toThrow('Por favor informe se é estudante');
+
+        expect(fareCalculation(1, true)).not.toThrow();
+        expect(fareCalculation(1, false)).not.toThrow();
+    });
+
+    it([
+        [5, false, 'Passagem gratuita'],
+        [7, false, 'Valor da passagem R$ 2,50'],
+        [7, true, 'Valor da passagem R$ 1,25'],
+        [70, false, 'Valor da passagem R$ 1,75'],
+        [70, true, 'Valor da passagem R$ 1,25'],
+        [32, false, 'Valor da passagem 2,50']
+    ])('Retorna o valor correto da tarifa', (age, student, response) => {
+        expect(fareCalculation(age, student)).toBe(response);
+    });
+});
