@@ -2,7 +2,8 @@ import {
     convertTemperature,
     bmiCalculation, 
     concatString,
-    calcAreaRectangle
+    calcAreaRectangle,
+    evenOrOdd
 }from '../script';
 
 
@@ -76,5 +77,23 @@ describe('Função de calculo de área de um retangulo', () => {
         [7, 20, 140],
     ])('Deve retornar a multiplicação dos valores', (width, heigth, result) => {
         expect(calcAreaRectangle(width, heigth)).toBe(result);
+    });
+});
+
+describe('Deve dizer se um número é divisivel por 2', () => {
+    it('Falha ao informar um tipo incorreto de valor', () => {
+        expect(() => evenOrOdd(NaN)).toThrow(Error);
+        expect(() => evenOrOdd('#')).toThrow('O valor informado deve ser um número');
+    });
+
+    it.each([
+        [2, 'Par'],
+        [20, 'Par'],
+        [54, 'Par'],
+        [7, 'Impar'],
+        [19, 'Impar'],
+        [21, 'Impar'],
+    ])('Retorna de o numero é divisivel por 2', (number, result) => {
+        expect(() => evenOrOdd(number)).toBe(result);
     });
 });
