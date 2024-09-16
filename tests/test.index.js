@@ -97,3 +97,28 @@ describe('Deve dizer se um número é divisivel por 2', () => {
         expect(() => evenOrOdd(number)).toBe(result);
     });
 });
+
+describe('Deve informar a faixa etária com base na idade informada', () => {
+    it('Falha ao informar um tipo incorreto de valor', () => {
+        expect(() => ageRange(NaN)).toThrow(Error);
+        expect(() => ageRange('#')).toThrow('O valor informado deve ser um número');
+    });
+
+    it('Falha ao informar um valor menor que 0', () => {
+        expect(() => ageRange(-3)).toThrow(Error);
+        expect(() => ageRange(-1)).toThrow('A idade mnima deve ser 0');
+    })
+
+    it.each([
+        [6, 'Criança'],
+        [13, 'Adolescente'],
+        [18, 'Adulto'],
+        [60, 'Idoso'],
+        [11, 'Criança'],
+        [17, 'Adolescente'],
+        [59, 'Adulto'],
+        [99, 'Idoso'],
+    ])('Retorna a faixa etária correta com base na idade', (age, response) => {
+        expect(() => ageRange(age)).toBe(response);
+    });
+});
