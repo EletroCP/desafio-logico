@@ -101,3 +101,26 @@ export const compareNumbers = (num1, num2) => {
         return 'O primeiro número é maior.';
     }
 };
+
+export const calculator = (operator, num1, num2) => {
+    const operators = ['+', '-', '*', '/'];
+
+    if (isNaN(num1) || isNaN(num2)) {
+        throw new Error('O valor informado deve ser um número');
+    }
+
+    if (operator === null || operator === undefined) {
+        throw new Error('Deve se informado um operador valido');
+    }
+
+    if (operator === operators[3] && (num1 === 0 || num2 === 0)) {
+        return 'Infinity'
+    }
+
+    switch (operator) {
+    case operators[0]: return num1 + num2;
+    case operators[1]: return num1 - num2;
+    case operators[2]: return num1 * num1;
+    default: return num1 / num2;
+    }
+};
