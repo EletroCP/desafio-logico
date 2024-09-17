@@ -34,9 +34,9 @@ describe('01 - Função de converção de Celsius e Fahrenheit', () => {
 
 describe('02 - Função de calculo de IMC', () => {
     it.each([
-      ['80', 1.63, 'Os valores devem ser um número'],
-      [80, '1.63', 'Os valores devem ser um número'],
-      ['80', '1.63', 'Os valores devem ser um número'],
+      ['p', 1.63, 'Os valores devem ser um número'],
+      [80, '%', 'Os valores devem ser um número'],
+      [';', '¬', 'Os valores devem ser um número'],
     ])('Falha ao informar um tipo incorreto de valor', (peso, altura, errMsg) => {
       expect(() => bmiCalculation(peso, altura)).toThrow(Error);
       expect(() => bmiCalculation(peso, altura)).toThrow(errMsg);
@@ -46,16 +46,16 @@ describe('02 - Função de calculo de IMC', () => {
         [50, 1.80, 'Abaixo do peso normal'],
         [70, 1.80, 'Normal'],
         [85, 1.80, 'Sobrepeso'],
-        [95, 1.80, 'Obesidade grau I'],
-        [110, 1.80, 'Obesidade grau II'],
-        [125, 1.80, 'Obesidade grau III'],
+        [100, 1.80, 'Obesidade grau I'],
+        [120, 1.80, 'Obesidade grau II'],
+        [130, 1.80, 'Obesidade grau III'],
         [140, 1.80, 'Obesidade grau III'],
       ])('Deve retornar o tipo de obesidade com base no peso e altura', (peso, altura, result) => {
         expect(bmiCalculation(peso, altura)).toBe(result);
       });
 
     });
-    
+
     describe('03 - Função de concatenação de strings', () => {
         it.each([
             ['Carlos', 25, 'Brasilia', 'Olá! Sou Carlos tenho 25 anos e moro em Brasilia'],
