@@ -54,6 +54,20 @@ export const calcAreaRectangle = (width, height) => {
     return calc;
 };
 
+export const evenOrOdd = (number) => {
+    if (isNaN(number)) {
+        throw new Error('O valor informado deve ser um número');
+    }
+
+    const calc = number % 2;
+
+    if (calc === 0) {
+        return 'Par';
+    } else {
+        return 'Impar';
+    }
+}
+
 export const ageRange = (age) => {
     if (isNaN(age)) {
         throw new Error('O valor informado deve ser um número');
