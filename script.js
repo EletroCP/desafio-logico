@@ -56,7 +56,7 @@ export const calcAreaRectangle = (width, height) => {
 
 export const ageRange = (age) => {
     if (isNaN(age)) {
-        throw new Error('Os valores devem ser um número');
+        throw new Error('O valor informado deve ser um número');
     }
 
     if (age >= 0 && age <= 12) {
@@ -69,5 +69,21 @@ export const ageRange = (age) => {
         return 'Idoso';
     } else {
         throw new Error('A idade minima deve ser 0');
+    }
+};
+
+export const compareNumbers = (num1, num2) => {
+    if (isNaN(num1) || isNaN(num2)) {
+        throw new Error('O valor informado deve ser um número');
+    }
+
+    const num1IsBigger = num1 > num2;
+
+    if (num1 === num2) {
+        return 'Os números são iguais.';
+    } else if (!num1IsBigger) {
+        return 'O primeiro número é menor.';
+    } else {
+        return 'O primeiro número é maior.';
     }
 };
