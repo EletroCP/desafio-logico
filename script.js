@@ -44,3 +44,12 @@ export const bmiCalculation = (weight, height) => {
 export const concatString = (name, age, state) => {
     return `Olá! Sou ${name} tenho ${age} anos e moro em ${state}`
 };
+
+export const calcAreaRectangle = (width, height) => {
+    if (isNaN(width) || isNaN(height)) {
+        throw new Error('Os valores devem ser números');
+    }
+
+    const calc = width * height;
+    return calc;
+};
