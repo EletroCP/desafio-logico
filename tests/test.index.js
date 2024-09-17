@@ -14,8 +14,8 @@ import {
 
 describe('01 - Função de converção de Celsius e Fahrenheit', () => {
     it('Se falha ao informar um tipo incorreto de medida', () => {
-        expect(convertTemperature('banana', 14)).toBeInstanceOf(Error);
-        expect(convertTemperature('banana', 14).message).toBe('Tipo de temperatura inválido.');
+        expect(convertTemperature('banana', 14)).toThrow(Error);
+        expect(() => convertTemperature('banana', 14)).toThrow('Tipo de temperatura inválido.');
     });
 
     it('Se falha caso o valor da temperatura não seja um numero', () => {
@@ -24,7 +24,7 @@ describe('01 - Função de converção de Celsius e Fahrenheit', () => {
     });
 
     it('Se converte corretamente de celsius para fahrenheit', () => {
-        expect(convertTemperature('celcius', 25)).expect(77);       
+        expect(convertTemperature('celcius', 25)).toBe(77);       
     });
 
     it('Se converte corretamente de fahrenheit para celcius', () => {
@@ -38,7 +38,7 @@ describe('02 - Função de calculo de IMC', () => {
       [80, '1.63', 'Os valores devem ser um número'],
       ['80', '1.63', 'Os valores devem ser um número'],
     ])('Falha ao informar um tipo incorreto de valor', (peso, altura, errMsg) => {
-      expect(() => bmiCalculation(peso, altura)).toThrow(Error);
+      expect(bmiCalculation(peso, altura)).toThrow(Error);
       expect(() => bmiCalculation(peso, altura)).toThrow(errMsg);
     });
 
@@ -72,8 +72,7 @@ describe('04 - Função de calculo de área de um retangulo', () => {
         [15, '16', 'Os valores devem ser números'],
         ['15', '16', 'Os valores devem ser números'],
     ])('Deve retornar uma menssagem de erro', (width, heigth, errMsg) => {
-        expect(calcAreaRectangle(width, heigth)).toThrow(Error);
-        expect(calcAreaRectangle(width, heigth)).toThrow(errMsg);
+        expect(() => calcAreaRectangle(width, heigth)).toThrow(errMsg);
     });
 
     it.each([
@@ -87,7 +86,7 @@ describe('04 - Função de calculo de área de um retangulo', () => {
 
 describe('05 - Deve dizer se um número é divisivel por 2', () => {
     it('Falha ao informar um tipo incorreto de valor', () => {
-        expect(() => evenOrOdd(NaN)).toThrow(Error);
+        expect(evenOrOdd(NaN)).toThrow(Error);
         expect(() => evenOrOdd('#')).toThrow('O valor informado deve ser um número');
     });
 
@@ -99,18 +98,18 @@ describe('05 - Deve dizer se um número é divisivel por 2', () => {
         [19, 'Impar'],
         [21, 'Impar'],
     ])('Retorna de o numero é divisivel por 2', (number, result) => {
-        expect(() => evenOrOdd(number)).toBe(result);
+        expect(evenOrOdd(number)).toBe(result);
     });
 });
 
 describe('06 - Deve informar a faixa etária com base na idade informada', () => {
     it('Falha ao informar um tipo incorreto de valor', () => {
-        expect(() => ageRange(NaN)).toThrow(Error);
+        expect(ageRange(NaN)).toThrow(Error);
         expect(() => ageRange('#')).toThrow('O valor informado deve ser um número');
     });
 
     it('Falha ao informar um valor menor que 0', () => {
-        expect(() => ageRange(-3)).toThrow(Error);
+        expect(ageRange(-3)).toThrow(Error);
         expect(() => ageRange(-1)).toThrow('A idade mnima deve ser 0');
     })
 
@@ -124,13 +123,13 @@ describe('06 - Deve informar a faixa etária com base na idade informada', () =>
         [59, 'Adulto'],
         [99, 'Idoso'],
     ])('Retorna a faixa etária correta com base na idade', (age, response) => {
-        expect(() => ageRange(age)).toBe(response);
+        expect(ageRange(age)).toBe(response);
     });
 });
 
 describe('07 - Deve retornar se os números comparados são maior, menor ou igual', () => {
     it('Falha ao informar um tipo incorreto de valor', () => {
-        expect(() => ageRange(NaN)).toThrow(Error);
+        expect(ageRange(NaN)).toThrow(Error);
         expect(() => ageRange(NaN)).toThrow('O valor informado deve ser um número');
     });
 
@@ -139,25 +138,25 @@ describe('07 - Deve retornar se os números comparados são maior, menor ou igua
         [2, 1, 'O primeiro número é maior.'],
         [1, 1, 'Os números são iguais.'],
     ])('Retorna a resposta correta', (value1, value2, response) => {
-        expect(() => compareNumbers(value1, value2)).toBe(response);
+        expect(compareNumbers(value1, value2)).toBe(response);
     });
 });
 
 describe('08 - Deve retornar o resultado correto com base na operação',() => {
     const operators = ['+', '-', '*', '/'];
     it('Falha ao informar valores que não são números', () => {
-        expect(() => calculator(operators[0], NaN, 1)).toThrow(Error);
+        expect(calculator(operators[0], NaN, 1)).toThrow(Error);
         expect(() => calculator(operators[0], NaN, 1)).toThrow('O valor informado deve ser um número');
 
-        expect(() => calculator(operators[0], 1, NaN)).toThrow(Error);
+        expect(calculator(operators[0], 1, NaN)).toThrow(Error);
         expect(() => calculator(operators[0], 1, NaN)).toThrow('O valor informado deve ser um número');
 
-        expect(() => calculator(operators[0], NaN, NaN)).toThrow(Error);
+        expect(calculator(operators[0], NaN, NaN)).toThrow(Error);
         expect(() => calculator(operators[0], NaN, NaN)).toThrow('O valor informado deve ser um número');
     });
 
     it('Falha ao não informar um operador', () => {
-        expect(() => calculator(null, 4)).toThrow(Error);
+        expect(calculator(null, 4)).toThrow(Error);
         expect(() => calculator(null, 4)).toThrow('Deve se informado um operador valido');
     });
 
@@ -168,41 +167,40 @@ describe('08 - Deve retornar o resultado correto com base na operação',() => {
         [operators[0], 5, 5, 10],
         [operators[3], 5, 0, 'Infinity'],
     ])('Retorna os valores corretos com base nas operações', (operator, num1, num2, result) => {
-        expect(() => calculator(operator, num1, num2)).toBe(result)
+        expect(calculator(operator, num1, num2)).toBe(result)
     });
 });
 
 describe('09 - Deve retornar o valor correto da tarifa', () => {
-    it('O valor da entrada precisa ser um numero', () => {
-        expect(fareCalculation(NaN, true)).toThrow(Error);
-        expect(fareCalculation(NaN, true)).toThrow('O valor da idade dev e ser um número');
+    it('O valor da idade precisa ser um número', () => {
+        expect(() => fareCalculation(NaN, true)).toThrow('O valor da idade deve ser um número');
     });
 
-    it('A entrada de estudande deve ser true ou false', () => {
+    it('A entrada de estudante deve ser true ou false', () => {
         expect(() => fareCalculation(1, 'sim')).toThrow('Por favor informe se é estudante');
         expect(() => fareCalculation(1, null)).toThrow('Por favor informe se é estudante');
         expect(() => fareCalculation(1, 1)).toThrow('Por favor informe se é estudante');
 
-        expect(fareCalculation(1, true)).not.toThrow();
-        expect(fareCalculation(1, false)).not.toThrow();
+        expect(() => fareCalculation(1, true)).not.toThrow();
+        expect(() => fareCalculation(1, false)).not.toThrow();
     });
 
-    it.each([
+    test.each([
         [5, false, 'Passagem gratuita'],
         [7, false, 'Valor da passagem R$ 2,50'],
         [7, true, 'Valor da passagem R$ 1,25'],
         [70, false, 'Valor da passagem R$ 1,75'],
         [70, true, 'Valor da passagem R$ 1,25'],
-        [32, false, 'Valor da passagem 2,50']
-    ])('Retorna o valor correto da tarifa', (age, student, response) => {
-        expect(fareCalculation(age, student)).toBe(response);
+        [32, false, 'Valor da passagem R$ 2,50']
+    ])('Retorna o valor correto da tarifa', (age, student, expectedFare) => {
+        expect(fareCalculation(age, student)).toBe(expectedFare);
     });
 });
 
 describe('10 - Retorna o valor da soma dos valores anterioreas até a entrada', () => {
     it('Retorna um erro caso a entrada não seja um numero', () => {
         expect(sumNumbers(NaN)).toThrow(Error);
-        expect(sumNumbers(NaN)).toThrow('O valor da idade dev e ser um número');
+        expect(() => sumNumbers(NaN)).toThrow('O valor da idade dev e ser um número');
     })
 
     it.each([
