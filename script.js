@@ -124,3 +124,27 @@ export const calculator = (operator, num1, num2) => {
     default: return num1 / num2;
     }
 };
+
+export const fareCalculation = (age, studant) => {
+    if (isNaN(age)) {
+        throw new Error('O valor da idade deve ser um número');
+    }
+
+    if (typeof studant !== 'boolean') {
+        throw new Error('Por favor informe se é estudante');
+    }
+
+    if (age <= 6) {
+        return 'Passagem gratuita';
+    };
+
+    if (studant) {
+        return 'Valor da passagem R$ 1,25';
+    }
+
+    if (age >= 60) {
+        return 'Valor da passagem R$ 1,75'
+    }
+
+    return 'Valor da passagem R$ 2,50';
+};
