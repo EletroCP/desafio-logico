@@ -40,3 +40,7 @@ export const bmiCalculation = (weight, height) => {
         return 'Obesidade grau III';
     }
 };
+
+export const concatString = (name, age, state) => {
+    return `Olá! Sou ${name} tenho ${age} anos e moro em ${state}`
+};
