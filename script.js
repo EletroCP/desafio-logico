@@ -148,3 +148,17 @@ export const fareCalculation = (age, studant) => {
 
     return 'Valor da passagem R$ 2,50';
 };
+
+export const sumNumbers = (number) => {
+    if (isNaN(number)) {
+        throw new Error('O valor deve e ser um número');
+    }
+
+    let response = 0;
+
+    for (let index = 0; index <= number; index += 1) {
+        response += index;
+    }
+
+    return response;
+};
