@@ -1,6 +1,7 @@
 import {
     calculationTable,
-    primeNumbers
+    primeNumbers,
+    asteriskPattern
 } from '../script';
 
 describe('Função de calculo de tabuada do 1 ao 10', () => {
@@ -30,5 +31,29 @@ describe('Função que retorna todos os números primos de 1 até N', () => {
         [100, [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97]]
     ])('Deve retornar um array com a lista de números primos de 1 até %i', (input, expected) => {
         expect(primeNumbers(input)).toEqual(expected);
+    });
+});
+
+describe('Função que exibe um padrão de asteriscos até N', () => {
+    it('Deve lançar um erro se a entrada não for um número positivo', () => {
+        expect(() => asteriskPattern(-5)).toThrow('O valor de entrada deve ser um número positivo');
+        expect(() => asteriskPattern(0)).toThrow('O valor de entrada deve ser um número positivo');
+        expect(() => asteriskPattern(NaN)).toThrow('O valor de entrada deve ser um número positivo');
+    });
+
+    it.each([
+        [1, '*'],
+        [2, `*
+**`],
+        [3, `*
+**
+***`],
+        [5, `*
+**
+***
+****
+*****`]
+    ])('Deve retornar o padrão correto de asteriscos para N = %i', (input, expected) => {
+        expect(asteriskPattern(input)).toBe(expected);
     });
 });
