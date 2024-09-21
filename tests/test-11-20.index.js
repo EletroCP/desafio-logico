@@ -1,10 +1,11 @@
 import {
     calculationTable,
     primeNumbers,
-    asteriskPattern
+    asteriskPattern,
+    fibonacciSequence
 } from '../script';
 
-describe('Função de calculo de tabuada do 1 ao 10', () => {
+describe('11 - Função de calculo de tabuada do 1 ao 10', () => {
     it('O valor de entrada deve ser um número', () => {
         expect(() => calculationTable(NaN)).toThrow(Error);
         expect(() => calculationTable(NaN)).toThrow('O valor de entrada deve ser um número');
@@ -19,7 +20,7 @@ describe('Função de calculo de tabuada do 1 ao 10', () => {
     });
 });
 
-describe('Função que retorna todos os números primos de 1 até N', () => {
+describe('12 - Função que retorna todos os números primos de 1 até N', () => {
     it('Retorna um erro caso a entrada não sejá um número', () => {
         expect(() => primeNumbers(NaN)).toThrow(Error);
         expect(() => primeNumbers(NaN)).toThrow('O valor de entrada deve ser um número');
@@ -34,7 +35,7 @@ describe('Função que retorna todos os números primos de 1 até N', () => {
     });
 });
 
-describe('Função que exibe um padrão de asteriscos até N', () => {
+describe('13 - Função que exibe um padrão de asteriscos até N', () => {
     it('Deve lançar um erro se a entrada não for um número positivo', () => {
         expect(() => asteriskPattern(-5)).toThrow('O valor de entrada deve ser um número positivo');
         expect(() => asteriskPattern(0)).toThrow('O valor de entrada deve ser um número positivo');
@@ -55,5 +56,21 @@ describe('Função que exibe um padrão de asteriscos até N', () => {
 *****`]
     ])('Deve retornar o padrão correto de asteriscos para N = %i', (input, expected) => {
         expect(asteriskPattern(input)).toBe(expected);
+    });
+});
+
+describe('14 - Receba um número N e exibe a sequência de Fibonacci até N.', () => {
+    it('Deve lançar um erro se a entrada não for um número positivo', () => {
+        expect(() => fibonacciSequence(-5)).toThrow('O valor de entrada deve ser um número positivo');
+        expect(() => fibonacciSequence(0)).toThrow('O valor de entrada deve ser um número positivo');
+        expect(() => fibonacciSequence(NaN)).toThrow('O valor de entrada deve ser um número positivo');
+    });
+    
+    it.each([
+        [10, [1, 1, 2, 3, 5, 8]],
+        [50, [1, 1, 2, 3, 5, 8, 13, 21, 34]],
+        [200, [1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144]]
+    ])('Deve retornar a sequência de Fibonacci de 1 até %i', (input, expected) => {
+        expect(fibonacciSequence(input)).toEqual(expected);
     });
 });
