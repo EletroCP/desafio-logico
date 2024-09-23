@@ -6,7 +6,8 @@ import {
     isDivisible,
     minValue,
     maxValue,
-    reverseString
+    reverseString,
+    vowelCounts
 } from '../script';
 
 describe('11 - Função de calculo de tabuada do 1 ao 10', () => {
@@ -178,4 +179,32 @@ describe('18 - Retorna uma string reordenada ao contrário', () => {
   ])('deve reordenar uma string comum ao contrário', (input, expected) => {
     expect(reverseString(input)).toBe(expected);
   });
+});
+
+describe('19 - Retorna o numero de vogais de uma string', () => {
+    it('deve retornar uma string vazia quando a string passada for vazia', () => {
+        expect(vowelCounts('')).toBe('');
+      });
+    
+      it('deve lançar um erro se o argumento for nulo', () => {
+        expect(() => vowelCounts(null)).toThrow('O argumento não pode ser nulo ou indefinido');
+      });
+    
+      it('deve lançar um erro se o argumento for indefinido', () => {
+        expect(() => vowelCounts(undefined)).toThrow('O argumento não pode ser nulo ou indefinido');
+      });
+    
+      it('deve lançar um erro se o argumento não for uma string', () => {
+        expect(() => vowelCounts(123)).toThrow('O argumento deve ser uma string');
+        expect(() => vowelCounts(true)).toThrow('O argumento deve ser uma string');
+        expect(() => vowelCounts([])).toThrow('O argumento deve ser uma string');
+      });
+
+      it.each([
+        ['ovo', 2],
+        ['Almondegas', 4],
+        ['Epaminondas', 5]
+        ])('Deve retornar a quantidade de vogais da string "%s"', (input, expected) => {
+            expect(vowelCounts(input)).toBe(expected);
+        });
 });
