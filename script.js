@@ -180,10 +180,26 @@ export const calculationTable = (number) => {
 
 export const isPrime = (number) => {
     if (number < 2) { return false; }
+    //Math.sqrt calcula o valor da raiz quadrada do valor passado
     for (let index = 2; index <= Math.sqrt(number); index += 1) {
         if (number % index === 0) {
             return false;
         }
     }
     return true;
+}
+
+export const primeNumbers = (number) => {
+    const primes = [];
+
+    if (isNaN(number)) {
+        throw new Error('O valor de entrada deve ser um número')
+    };
+
+    for (let index = 2; index <= number; index += 1) {
+        if (isPrime(index)) {
+            primes.push(index);
+        }
+    }
+    return primes;
 }
