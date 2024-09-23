@@ -125,3 +125,19 @@ describe('17 - Min - Retorna o valor minimo entre dois número', () => {
         expect(minValue(num1, num2)).toBe(expected);
     });
 });
+
+describe('17 - Max - Retorna o valor minimo entre dois número', () => {
+    it('Deve lançar um erro se a entrada não for um número positivo', () => {
+        expect(() => maxValue('*', 10)).toThrow('O valor de entrada deve ser um número');
+        expect(() => maxValue(10, '*')).toThrow('O valor de entrada deve ser um número');
+        expect(() => maxValue(NaN)).toThrow('O valor de entrada deve ser um número');
+    });
+
+    it.each([
+        [0, 1, 1],
+        [7, 11, 11]
+        [-5, -12, -5]
+    ])('Verifica se o valor retornado é o menor entre os inseridos', (num1, num2, expected) => {
+        expect(maxValue(num1, num2)).toBe(expected);
+    });
+});
