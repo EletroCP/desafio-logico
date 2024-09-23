@@ -5,7 +5,8 @@ import {
     fibonacciSequence,
     isDivisible,
     minValue,
-    maxValue
+    maxValue,
+    reverseString
 } from '../script';
 
 describe('11 - Função de calculo de tabuada do 1 ao 10', () => {
@@ -140,4 +141,41 @@ describe('17 - Max - Retorna o valor minimo entre dois número', () => {
     ])('Verifica se o valor retornado é o menor entre os inseridos', (num1, num2, expected) => {
         expect(maxValue(num1, num2)).toBe(expected);
     });
+});
+
+
+describe('18 - Retorna uma string reordenada ao contrário', () => {
+  it('deve retornar uma string vazia quando a string passada for vazia', () => {
+    expect(reverseString('')).toBe('');
+  });
+
+  it('deve retornar uma string vazia se for passada apenas com espaços', () => {
+    expect(reverseString('          ')).toBe('')
+  });
+
+  it('deve lançar um erro se o argumento for nulo', () => {
+    expect(() => reverseString(null)).toThrow('O argumento não pode ser nulo ou indefinido');
+  });
+
+  it('deve lançar um erro se o argumento for indefinido', () => {
+    expect(() => reverseString(undefined)).toThrow('O argumento não pode ser nulo ou indefinido');
+  });
+
+  it('deve lançar um erro se o argumento não for uma string', () => {
+    expect(() => reverseString(123)).toThrow('O argumento deve ser uma string');
+    expect(() => reverseString(true)).toThrow('O argumento deve ser uma string');
+    expect(() => reverseString([])).toThrow('O argumento deve ser uma string');
+  });
+
+  it('deve reordenar números representados como string', () => {
+    expect(reverseString('12345')).toBe('54321');
+  });
+
+  it.each([
+    ['Amêndoa', 'aodnêmA'],
+    ['Casca', 'acsaC'],
+    ['omonG', 'Gnomo']
+  ])('deve reordenar uma string comum ao contrário', (input, expected) => {
+    expect(reverseString(input)).toBe(expected);
+  });
 });
