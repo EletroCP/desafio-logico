@@ -162,3 +162,18 @@ export const sumNumbers = (number) => {
 
     return response;
 };
+
+export const calculationTable = (number) => {
+    if (isNaN(number)) {
+        throw new Error('O valor de entrada deve ser um número')
+    };
+
+    const table = [];
+
+    for (let index = 1; index < 11; index += 1) {
+        const multipli = index * number;
+        table.push(multipli);
+    }
+
+    return table;
+}
