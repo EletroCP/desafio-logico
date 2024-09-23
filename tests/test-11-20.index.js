@@ -7,7 +7,8 @@ import {
     minValue,
     maxValue,
     reverseString,
-    vowelCounts
+    vowelCounts,
+    isPalindrome
 } from '../script';
 
 describe('11 - Função de calculo de tabuada do 1 ao 10', () => {
@@ -207,4 +208,41 @@ describe('19 - Retorna o numero de vogais de uma string', () => {
         ])('Deve retornar a quantidade de vogais da string "%s"', (input, expected) => {
             expect(vowelCounts(input)).toBe(expected);
         });
+});
+
+describe('20 - Retorna true ou false se for ou não um palindromo', () => {
+
+    it('deve retornar false para frases que não são palíndromas', () => {
+      expect(isPalindrome('Esta frase não é palíndroma')).toBe(false);
+    });
+  
+    it('deve lançar um erro se o argumento for nulo ou indefinido', () => {
+      expect(() => isPalindrome(null)).toThrow('O argumento deve ser uma string');
+      expect(() => isPalindrome(undefined)).toThrow('O argumento deve ser uma string');
+    });
+  
+    it('deve lançar um erro se o argumento não for uma string', () => {
+      expect(() => isPalindrome(123)).toThrow('O argumento deve ser uma string');
+      expect(() => isPalindrome(true)).toThrow('O argumento deve ser uma string');
+      expect(() => isPalindrome([])).toThrow('O argumento deve ser uma string');
+    });
+
+    it('deve retornar false para palavras que não são palíndromas', () => {
+      expect(isPalindrome('palavra')).toBe(false);
+      expect(isPalindrome('teste')).toBe(false);
+    });
+
+    it('deve retornar true para uma string vazia', () => {
+      expect(isPalindrome('')).toBe(true);
+    });
+  
+    it('deve retornar true para palavras palíndromas simples', () => {
+      expect(isPalindrome('ovo')).toBe(true);
+      expect(isPalindrome('arara')).toBe(true);
+    });
+  
+    it('deve retornar true para frases palíndromas ignorando espaços e pontuação', () => {
+      expect(isPalindrome('A man a plan a canal Panama')).toBe(true);
+      expect(isPalindrome('Socorram-me, subi no ônibus em Marrocos')).toBe(true);
+    });
 });
