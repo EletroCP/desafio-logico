@@ -93,3 +93,17 @@ describe('15 - Receve dois valores e retorna se o primeiro é divisivel pelo seg
         expect(isDivisible(number1, number2)).toBe(expected);
     });
 });
+
+describe('16 - Recebe um valor e retornana o sesultado fatorial dele', () => {
+    it('Deve lançar um erro se a entrada não for um número positivo', () => {
+        expect(() => factorial(-5)).toThrow('O valor de entrada deve ser um número positivo');
+        expect(() => factorial(NaN)).toThrow('O valor de entrada deve ser um número positivo');
+    });
+    it.each([
+        [0, 'O fatorial de 0 é 1.'],
+        [5, 'O fatorial de 5 é 120.'],
+        [10, 'O fatorial de 10 é 3.628.800.'],
+    ])('Deve retornar o valor fatorial de %i', (number, expect) => {
+        expect(factorial(number)).toBe(expect);
+    });
+});
