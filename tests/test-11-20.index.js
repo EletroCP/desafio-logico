@@ -2,7 +2,8 @@ import {
     calculationTable,
     primeNumbers,
     asteriskPattern,
-    fibonacciSequence
+    fibonacciSequence,
+    isDivisible
 } from '../script';
 
 describe('11 - Função de calculo de tabuada do 1 ao 10', () => {
@@ -72,5 +73,23 @@ describe('14 - Receba um número N e exibe a sequência de Fibonacci até N.', (
         [200, [1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144]]
     ])('Deve retornar a sequência de Fibonacci de 1 até %i', (input, expected) => {
         expect(fibonacciSequence(input)).toEqual(expected);
+    });
+});
+
+
+describe('15 - Receve dois valores e retorna se o primeiro é divisivel pelo segundo', () => {
+    it('Deve lançar um erro se a entrada não for um número positivo', () => {
+        expect(() => isDivisible('*', 10)).toThrow('O valor de entrada deve ser um número');
+        expect(() => isDivisible(10, '*')).toThrow('O valor de entrada deve ser um número');
+        expect(() => isDivisible(0)).toThrow('Infinito');
+        expect(() => isDivisible(NaN)).toThrow('O valor de entrada deve ser um número');
+    });
+
+    it.each([
+        [10,5, 'É divisivel.'],
+        [10, 2, 'É divisivel.'],
+        [10, 30, 'Não é divisivel.'],
+    ])('Retorna se é ou não divisivel com base no resto', (number1, number2, expected) => { 
+        expect(isDivisible(number1, number2)).toBe(expected);
     });
 });
