@@ -3,7 +3,9 @@ import {
     primeNumbers,
     asteriskPattern,
     fibonacciSequence,
-    isDivisible
+    isDivisible,
+    minValue,
+    maxValue
 } from '../script';
 
 describe('11 - Função de calculo de tabuada do 1 ao 10', () => {
@@ -105,5 +107,21 @@ describe('16 - Recebe um valor e retornana o sesultado fatorial dele', () => {
         [10, 'O fatorial de 10 é 3.628.800.'],
     ])('Deve retornar o valor fatorial de %i', (number, expect) => {
         expect(factorial(number)).toBe(expect);
+    });
+});
+
+describe('17 - Min - Retorna o valor minimo entre dois número', () => {
+    it('Deve lançar um erro se a entrada não for um número positivo', () => {
+        expect(() => minValue('*', 10)).toThrow('O valor de entrada deve ser um número');
+        expect(() => minValue(10, '*')).toThrow('O valor de entrada deve ser um número');
+        expect(() => minValue(NaN)).toThrow('O valor de entrada deve ser um número');
+    });
+
+    it.each([
+        [0, 1, 0],
+        [7, 11, 7]
+        [-5, -12, -12]
+    ])('Verifica se o valor retornado é o menor entre os inseridos', (num1, num2, expected) => {
+        expect(minValue(num1, num2)).toBe(expected);
     });
 });
