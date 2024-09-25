@@ -220,3 +220,21 @@ export const asteriskPattern = (number) => {
 
     return pattern;
 }
+
+export const fibonacciSequence = (number) => {
+    if (isNaN(number) || number <= 0) {
+        throw new Error('O valor de entrada deve ser um número positivo')
+    };
+
+    const sequence = [1, 1];
+
+    while (true) {
+        const nextValue = sequence[sequence.length - 1] + sequence[sequence.length - 2];
+        if (nextValue > number) {
+            break;
+        }
+        sequence.push(nextValue);
+    }
+
+    return sequence;
+}
