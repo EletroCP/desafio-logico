@@ -305,3 +305,17 @@ export const maxValue = (number1, number2) => {
 
     return number1 > number2 ? number1 : number2;
 };
+
+export const reverseString = (string) => {
+    if (string === null || string === undefined) {
+        throw new Error('O argumento não pode ser nulo ou indefinido');
+    };
+
+    if (typeof string !== 'string') {
+        throw new Error('O argumento deve ser uma string');
+    };
+
+    const value = string.trim().split('').reverse().join('');
+
+    return value;
+};
