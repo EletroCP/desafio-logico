@@ -206,7 +206,7 @@ export const primeNumbers = (number) => {
 
 export const asteriskPattern = (number) => {
     if (isNaN(number) || number <= 0) {
-        throw new Error('O valor de entrada deve ser um número positivo')
+        throw new Error('O valor de entrada deve ser um número positivo');
     };
 
     let pattern = '';
@@ -223,7 +223,7 @@ export const asteriskPattern = (number) => {
 
 export const fibonacciSequence = (number) => {
     if (isNaN(number) || number <= 0) {
-        throw new Error('O valor de entrada deve ser um número positivo')
+        throw new Error('O valor de entrada deve ser um número positivo');
     };
 
     const sequence = [1, 1];
@@ -238,3 +238,25 @@ export const fibonacciSequence = (number) => {
 
     return sequence;
 }
+
+export const isDivisible = (number1, number2) => {
+    if (isNaN(number1) || isNaN(number2) ) {
+        throw new Error('O valor de entrada deve ser um número positivo');
+    };
+
+    if (number1 === 0 || number2 === 0) {
+        throw new Error('Infinito');
+    }
+
+    if (number1 < 0 || number2 < 0) {
+        throw new Error('O valor de entrada deve ser um número positivo');
+    }
+
+    const result = number1 % number2;
+
+    if (result !== 0) {
+        return 'Não é divisivel.'
+    };
+
+    return 'É divisivel.'
+};
