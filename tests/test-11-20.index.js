@@ -4,6 +4,7 @@ import {
     asteriskPattern,
     fibonacciSequence,
     isDivisible,
+    factorial,
     minValue,
     maxValue,
     reverseString,
@@ -107,9 +108,9 @@ describe('16 - Recebe um valor e retornana o sesultado fatorial dele', () => {
     it.each([
         [0, 'O fatorial de 0 é 1.'],
         [5, 'O fatorial de 5 é 120.'],
-        [10, 'O fatorial de 10 é 3.628.800.'],
-    ])('Deve retornar o valor fatorial de %i', (number, expect) => {
-        expect(factorial(number)).toBe(expect);
+        [10, 'O fatorial de 10 é 3628800.'],
+    ])('Deve retornar o valor fatorial de %i', (number, expected) => {
+        expect(factorial(number)).toBe(expected);
     });
 });
 
