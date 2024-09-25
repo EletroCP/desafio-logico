@@ -86,8 +86,8 @@ describe('15 - Receve dois valores e retorna se o primeiro é divisivel pelo seg
     it('Deve lançar um erro se a entrada não for um número positivo', () => {
         expect(() => isDivisible('*', 10)).toThrow('O valor de entrada deve ser um número');
         expect(() => isDivisible(10, '*')).toThrow('O valor de entrada deve ser um número');
-        expect(() => isDivisible(0)).toThrow('Infinito');
-        expect(() => isDivisible(NaN)).toThrow('O valor de entrada deve ser um número');
+        expect(() => isDivisible(0, 10)).toThrow('Infinito');
+        expect(() => isDivisible(NaN, 10)).toThrow('O valor de entrada deve ser um número');
     });
 
     it.each([
