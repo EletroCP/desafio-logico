@@ -281,3 +281,27 @@ export const factorial = (number) => {
 
     return `O fatorial de ${number} é ${result}.`;
 };
+
+export const minValue = (number1, number2) => {
+    if (typeof number1 !== 'number' || typeof number2 !== 'number') {
+        throw new Error('O valor de entrada deve ser um número');
+    };
+
+    if (number1 === number2) {
+        return 'Os valores são iguais';
+    };
+
+    return number1 < number2 ? number1 : number2;
+};
+
+export const maxValue = (number1, number2) => {
+    if (typeof number1 !== 'number' || typeof number2 !== 'number') {
+        throw new Error('O valor de entrada deve ser um número');
+    };
+
+    if (number1 === number2) {
+        return 'Os valores são iguais';
+    };
+
+    return number1 > number2 ? number1 : number2;
+};
