@@ -319,3 +319,31 @@ export const reverseString = (string) => {
 
     return value;
 };
+
+export const vowelCounts = (input) => {
+
+    if (input === null || input === undefined) {
+        throw new Error('O argumento não pode ser nulo ou indefinido');
+    };
+
+    if (typeof input !== 'string') {
+        throw new Error('O argumento deve ser uma string');
+    };
+
+    if (input === '') {
+        return input;
+    };
+
+    const vowels = ['a', 'e', 'i', 'o', 'u'];
+
+    const value = input.trim().toLowerCase().split('');
+
+    const onlyVowels = value.reduce((acc, letter) => {
+        if (vowels.includes(letter)) {
+            acc.push(letter);
+        }
+        return acc;
+    }, []);
+
+    return onlyVowels.length;
+};
