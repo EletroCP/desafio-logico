@@ -347,3 +347,19 @@ export const vowelCounts = (input) => {
 
     return onlyVowels.length;
 };
+
+export const isPalindrome = (input) => {
+    if (input === null || input === undefined) {
+        throw new Error('O argumento deve ser uma string');
+    }
+
+    if (typeof input !== 'string') {
+        throw new Error('O argumento deve ser uma string');
+    }
+
+    const normalizedString = input
+        .toLowerCase()
+        .replace(/[^a-z0-9]/g, '');
+
+    return normalizedString === normalizedString.split('').reverse().join('');
+};
