@@ -203,3 +203,20 @@ export const primeNumbers = (number) => {
     }
     return primes;
 }
+
+export const asteriskPattern = (number) => {
+    if (isNaN(number) || number <= 0) {
+        throw new Error('O valor de entrada deve ser um número positivo')
+    };
+
+    let pattern = '';
+
+    for (let index = 1; index <= number; index++) {
+        pattern += '*'.repeat(index);
+        if (index < number) {
+            pattern += '\n';
+        }
+    }
+
+    return pattern;
+}
