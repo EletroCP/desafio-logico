@@ -260,3 +260,24 @@ export const isDivisible = (number1, number2) => {
 
     return 'É divisivel.'
 };
+
+export const factorial = (number) => {
+    if (isNaN(number) ) {
+        throw new Error('O valor de entrada deve ser um número positivo');
+    };
+
+    if (number < 0) {
+        throw new Error('O valor de entrada deve ser um número positivo');
+    }
+
+    if (number === 0) {
+        return 'O fatorial de 0 é 1.';
+    }
+
+    let result = 1;
+    for (let i = 1; i <= number; i++) {
+        result *= i;
+    }
+
+    return `O fatorial de ${number} é ${result}.`;
+};
