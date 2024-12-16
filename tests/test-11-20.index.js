@@ -4,6 +4,7 @@ import {
     asteriskPattern,
     fibonacciSequence,
     isDivisible,
+    factorial,
     minValue,
     maxValue,
     reverseString,
@@ -86,8 +87,8 @@ describe('15 - Receve dois valores e retorna se o primeiro é divisivel pelo seg
     it('Deve lançar um erro se a entrada não for um número positivo', () => {
         expect(() => isDivisible('*', 10)).toThrow('O valor de entrada deve ser um número');
         expect(() => isDivisible(10, '*')).toThrow('O valor de entrada deve ser um número');
-        expect(() => isDivisible(0)).toThrow('Infinito');
-        expect(() => isDivisible(NaN)).toThrow('O valor de entrada deve ser um número');
+        expect(() => isDivisible(0, 10)).toThrow('Infinito');
+        expect(() => isDivisible(NaN, 10)).toThrow('O valor de entrada deve ser um número');
     });
 
     it.each([
@@ -107,42 +108,42 @@ describe('16 - Recebe um valor e retornana o sesultado fatorial dele', () => {
     it.each([
         [0, 'O fatorial de 0 é 1.'],
         [5, 'O fatorial de 5 é 120.'],
-        [10, 'O fatorial de 10 é 3.628.800.'],
-    ])('Deve retornar o valor fatorial de %i', (number, expect) => {
-        expect(factorial(number)).toBe(expect);
+        [10, 'O fatorial de 10 é 3628800.'],
+    ])('Deve retornar o valor fatorial de %i', (number, expected) => {
+        expect(factorial(number)).toBe(expected);
     });
 });
 
-describe('17 - Min - Retorna o valor minimo entre dois número', () => {
-    it('Deve lançar um erro se a entrada não for um número positivo', () => {
-        expect(() => minValue('*', 10)).toThrow('O valor de entrada deve ser um número');
-        expect(() => minValue(10, '*')).toThrow('O valor de entrada deve ser um número');
-        expect(() => minValue(NaN)).toThrow('O valor de entrada deve ser um número');
-    });
+describe('17 - Min - Retorna o valor minimo entre dois número', () => { 
+  it('Deve lançar um erro se a entrada não for um número', () => {
+      expect(() => minValue('*', 10)).toThrow('O valor de entrada deve ser um número');
+      expect(() => minValue(10, '*')).toThrow('O valor de entrada deve ser um número');
+      expect(() => minValue(NaN)).toThrow('O valor de entrada deve ser um número');
+  });
 
-    it.each([
-        [0, 1, 0],
-        [7, 11, 7]
-        [-5, -12, -12]
-    ])('Verifica se o valor retornado é o menor entre os inseridos', (num1, num2, expected) => {
-        expect(minValue(num1, num2)).toBe(expected);
-    });
+  it.each([
+      [0, 1, 0],
+      [7, 11, 7],
+      [-5, -12, -12]
+  ])('Verifica se o valor retornado é o menor entre os inseridos', (num1, num2, expected) => {
+      expect(minValue(num1, num2)).toBe(expected);
+  });
 });
 
-describe('17 - Max - Retorna o valor minimo entre dois número', () => {
-    it('Deve lançar um erro se a entrada não for um número positivo', () => {
-        expect(() => maxValue('*', 10)).toThrow('O valor de entrada deve ser um número');
-        expect(() => maxValue(10, '*')).toThrow('O valor de entrada deve ser um número');
-        expect(() => maxValue(NaN)).toThrow('O valor de entrada deve ser um número');
-    });
+describe('17 - Max - Retorna o valor máximo entre dois números', () => {
+  it('Deve lançar um erro se a entrada não for um número', () => {
+      expect(() => maxValue('*', 10)).toThrow('O valor de entrada deve ser um número');
+      expect(() => maxValue(10, '*')).toThrow('O valor de entrada deve ser um número');
+      expect(() => maxValue(NaN)).toThrow('O valor de entrada deve ser um número');
+  });
 
-    it.each([
-        [0, 1, 1],
-        [7, 11, 11]
-        [-5, -12, -5]
-    ])('Verifica se o valor retornado é o menor entre os inseridos', (num1, num2, expected) => {
-        expect(maxValue(num1, num2)).toBe(expected);
-    });
+  it.each([
+      [0, 1, 1],
+      [7, 11, 11],
+      [-5, -12, -5]
+  ])('Verifica se o valor retornado é o maior entre os inseridos', (num1, num2, expected) => {
+      expect(maxValue(num1, num2)).toBe(expected);
+  });
 });
 
 

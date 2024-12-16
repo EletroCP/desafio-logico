@@ -162,3 +162,204 @@ export const sumNumbers = (number) => {
 
     return response;
 };
+
+export const calculationTable = (number) => {
+    if (isNaN(number)) {
+        throw new Error('O valor de entrada deve ser um número')
+    };
+
+    const table = [];
+
+    for (let index = 1; index < 11; index += 1) {
+        const multipli = index * number;
+        table.push(multipli);
+    }
+
+    return table;
+}
+
+export const isPrime = (number) => {
+    if (number < 2) { return false; }
+    //Math.sqrt calcula o valor da raiz quadrada do valor passado
+    for (let index = 2; index <= Math.sqrt(number); index += 1) {
+        if (number % index === 0) {
+            return false;
+        }
+    }
+    return true;
+}
+
+export const primeNumbers = (number) => {
+    const primes = [];
+
+    if (isNaN(number)) {
+        throw new Error('O valor de entrada deve ser um número')
+    };
+
+    for (let index = 2; index <= number; index += 1) {
+        if (isPrime(index)) {
+            primes.push(index);
+        }
+    }
+    return primes;
+}
+
+export const asteriskPattern = (number) => {
+    if (isNaN(number) || number <= 0) {
+        throw new Error('O valor de entrada deve ser um número positivo');
+    };
+
+    let pattern = '';
+
+    for (let index = 1; index <= number; index++) {
+        pattern += '*'.repeat(index);
+        if (index < number) {
+            pattern += '\n';
+        }
+    }
+
+    return pattern;
+}
+
+export const fibonacciSequence = (number) => {
+    if (isNaN(number) || number <= 0) {
+        throw new Error('O valor de entrada deve ser um número positivo');
+    };
+
+    const sequence = [1, 1];
+
+    while (true) {
+        const nextValue = sequence[sequence.length - 1] + sequence[sequence.length - 2];
+        if (nextValue > number) {
+            break;
+        }
+        sequence.push(nextValue);
+    }
+
+    return sequence;
+}
+
+export const isDivisible = (number1, number2) => {
+    if (isNaN(number1) || isNaN(number2) ) {
+        throw new Error('O valor de entrada deve ser um número positivo');
+    };
+
+    if (number1 === 0 || number2 === 0) {
+        throw new Error('Infinito');
+    }
+
+    if (number1 < 0 || number2 < 0) {
+        throw new Error('O valor de entrada deve ser um número positivo');
+    }
+
+    const result = number1 % number2;
+
+    if (result !== 0) {
+        return 'Não é divisivel.'
+    };
+
+    return 'É divisivel.'
+};
+
+export const factorial = (number) => {
+    if (isNaN(number) ) {
+        throw new Error('O valor de entrada deve ser um número positivo');
+    };
+
+    if (number < 0) {
+        throw new Error('O valor de entrada deve ser um número positivo');
+    }
+
+    if (number === 0) {
+        return 'O fatorial de 0 é 1.';
+    }
+
+    let result = 1;
+    for (let i = 1; i <= number; i++) {
+        result *= i;
+    }
+
+    return `O fatorial de ${number} é ${result}.`;
+};
+
+export const minValue = (number1, number2) => {
+    if (typeof number1 !== 'number' || typeof number2 !== 'number') {
+        throw new Error('O valor de entrada deve ser um número');
+    };
+
+    if (number1 === number2) {
+        return 'Os valores são iguais';
+    };
+
+    return number1 < number2 ? number1 : number2;
+};
+
+export const maxValue = (number1, number2) => {
+    if (typeof number1 !== 'number' || typeof number2 !== 'number') {
+        throw new Error('O valor de entrada deve ser um número');
+    };
+
+    if (number1 === number2) {
+        return 'Os valores são iguais';
+    };
+
+    return number1 > number2 ? number1 : number2;
+};
+
+export const reverseString = (string) => {
+    if (string === null || string === undefined) {
+        throw new Error('O argumento não pode ser nulo ou indefinido');
+    };
+
+    if (typeof string !== 'string') {
+        throw new Error('O argumento deve ser uma string');
+    };
+
+    const value = string.trim().split('').reverse().join('');
+
+    return value;
+};
+
+export const vowelCounts = (input) => {
+
+    if (input === null || input === undefined) {
+        throw new Error('O argumento não pode ser nulo ou indefinido');
+    };
+
+    if (typeof input !== 'string') {
+        throw new Error('O argumento deve ser uma string');
+    };
+
+    if (input === '') {
+        return input;
+    };
+
+    const vowels = ['a', 'e', 'i', 'o', 'u'];
+
+    const value = input.trim().toLowerCase().split('');
+
+    const onlyVowels = value.reduce((acc, letter) => {
+        if (vowels.includes(letter)) {
+            acc.push(letter);
+        }
+        return acc;
+    }, []);
+
+    return onlyVowels.length;
+};
+
+export const isPalindrome = (input) => {
+    if (input === null || input === undefined) {
+        throw new Error('O argumento deve ser uma string');
+    }
+
+    if (typeof input !== 'string') {
+        throw new Error('O argumento deve ser uma string');
+    }
+
+    const normalizedString = input
+        .toLowerCase()
+        .replace(/[^a-z0-9]/g, '');
+
+    return normalizedString === normalizedString.split('').reverse().join('');
+};
